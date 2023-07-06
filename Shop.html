@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+</head>
+<body>
+    <script>
+
+        'use strict';
+
+
+        // Создаем класс товар
+        class Item {
+            constructor(id, name, discription, price, discountPrice) {
+                this.id = id;
+                this.name = name;
+                this.discription = discription;
+                this.price = price;
+                this.discountPrice = discountPrice;
+            };
+        };
+
+
+        // Создаем класс каталог
+        class Catalog {   
+            constructor(items) {
+                this.items = items;
+            };
+
+            getItemById(id) {
+                for (let item of this.items) {
+                    if (item.id === id) {
+                        return item
+                    }
+                }
+            };
+
+            getItems() {
+                return this.items
+            };
+        };
+
+
+        // Класс избранное наследуется от класса католог
+        class Favourites extends Catalog {
+            constructor(items) {
+                super(items)
+            }
+            
+            addItem(item) {
+                this.items.push(item)
+            }
+
+            removeItem(id) {
+                for (let i = 0; i < this.items.length; i++) {
+                    if (this.items[i].id === id) {
+                        this.items.splice(i, 1)
+                    }
+                }
+            }
+        };
+
+
+        // Класс корзина наследуется от класса избранное
+        class Cart extends Favourites {
+            constructor(items) {
+                super(items)
+            };
+            calcTotalSum() {
+                let totalPrice = 0;
+                let totalDiscountPrice = 0;
+                let totalDiscount = 0;
+
+                for (let item of this.items) {
+                    totalPrice += item.price;
+                    totalDiscountPrice += item.discountPrice;
+                    totalDiscount += item.price - item.discountPrice;
+                }
+
+                this.totalPrice = totalPrice;
+                this.totalDiscount = totalDiscount;
+                this.totalDiscountPrice = totalDiscountPrice;
+            }
+        };
+
+
+        // Массив товаров
+        const items = [new Item(1, 'Товар 1', 'Описание товара 1', 1000, 900),
+                       new Item(2, 'Товар 2', 'Описание товара 2', 1500, 1350),
+                       new Item(3, 'Товар 3', 'Описание товара 3', 2000, 1800),
+                       new Item(4, 'Товар 4', 'Описание товара 4', 2500, 2250),
+                       new Item(5, 'Товар 5', 'Описание товара 5', 3000, 2700),
+                      ];
+
+
+        // Создаем экземпляры классов
+        const catalog = new Catalog(items);   
+        const favourites = new Favourites([]);
+        const cart = new Cart([]);
+
+
+        // Переменная для выбора действий
+        let action; 
+
+        while (true) {
+            action = prompt('Выберите действие:' + '\n1. Каталог' + '\n2. Избранное'
+            + '\n3. Корзина');
+
+            //Переменная для вывода товаров
+            let printItems = '';
+
+            // Выполняем действие в зависимости от выбора пользователя
+            switch (action) {
+                case '1':
+                    for (let item of catalog.getItems()) {
+                        printItems += item.id + ' ' + item.name + ' ' + item.discription
+                        + ' ' + item.price + ' ' + item.discountPrice + '\n';
+                    };
+
+                    // Выводим товары и запрашиваем действие
+                    action = prompt('Вы находитесь в каталоге.\n\n' + printItems
+                    + '\nВыберите товар для добавление в Избранное или Корзину.');
+
+                    // Разделяем введенные данные на id и действие т.к. дается два числа
+                    action = action.split(' ');
+
+
+                    console.log(action);
+
+                    // Выполняем действие в зависимости от выбора
+                    switch(action[1]) {
+                        // Если мы находимся в избранном
+                        case '1':
+                            // Проверяем есть ли в Избранном товар
+                            if (favourites.getItemById(+action[0])) {
+                                alert('Товар уже есть в Избранном.')
+                            } else { // Если нет, то добавляем
+                                favourites.addItem(catalog.getItemById(+action[0]))
+                            };
+                        break;
+
+
+                        // Если мы находимся в корзине
+                        case '2':
+                            // Проверяем есть ли товар в корзине
+                            if (cart.getItemById(+action[0])) {
+                                alert('Товар уже есть в Корзине.')
+                            } else { // Если нет, то добавляем
+                                cart.addItem(catalog.getItemById(+action[0]))
+                            };
+                        break;
+
+                
+                    };
+                break;
+
+                // Если мы находимся в Избранном
+                case '2':
+                    // Добовляем в переменную printItems все товары
+                    for (let item of favourites.getItems()) {
+                        printItems += item.id + ' ' + item.name + ' ' + item.discription
+                        + ' ' + item.price + ' ' + item.discountPrice + '\n'
+                    };
+
+                    // Выводим товар изапрашиваем действие
+                    action = prompt('Вы находитесь в Избранном.\n\n' + printItems
+                    + '\nВыберите товар для удаления.')
+
+                    // Проверяем есть ли товар в Избранном
+                    if (favourites.getItemById(+action)) {
+                        favourites.removeItem(+action)
+                    } else {
+                        alert('Товара нет в Избранном.')
+                    };
+                break;
+
+
+                // Если выбрана Корзина
+                case '3':
+                    // Добавляем в переменную printItems все товары
+                    for (let item of cart.getItems()) {
+                        printItems += item.id + ' ' + item.name + ' ' + item.discription
+                        + ' ' + item.price + ' ' + item.discountPrice + '\n'
+                    };
+
+                    // Пересчитываем суммы всех товаров в корзине
+                    cart.calcTotalSum();
+
+                    // Выводим товары, цены и запрашиваем действие
+                    action = prompt('Вы находитесь в корзине.\n\n' + printItems
+                    + '\nЦена без скидки: ' + cart.totalPrice + '\nЦена со скидкой: '
+                    + cart.totalDiscountPrice + '\nВаша скидка составила: ' + 
+                    cart.totalDiscount + '\nВыберите товар для удаления.');
+
+
+                    // Проверяем есть ли товар в корзине
+                    if (cart.getItemById(+action)) {
+                        cart.removeItem(+action)
+                    } else {
+                        alert('Товара нет в корзине.')
+                    };
+                break;
+            };
+        };
+
+    </script>
+    
+</body>
+</html>
