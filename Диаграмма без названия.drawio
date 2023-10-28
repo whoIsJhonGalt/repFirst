@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-28T05:40:34.390Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15" etag="F3hVml-xFWO2JY55JsL3" version="22.0.8" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-10-28T05:41:34.472Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15" etag="lfqVbKsqAsdrTa6LsU_z" version="22.0.8" type="github" pages="3">
   <diagram name="Страница — 1" id="etw-HNZZ2bwNPlIj9f9X">
     <mxGraphModel dx="3360" dy="1106" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -2300,7 +2300,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="epPHkjIw1ETTszMbOwgI" name="Страница — 2">
-    <mxGraphModel dx="2021" dy="1943" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1623" dy="1685" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2656,7 +2656,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="mH68Cc9VVm9xcUMLe111-14" value="Stock" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;rounded=1;labelBackgroundColor=none;strokeWidth=2;shadow=0;fontFamily=Helvetica;verticalAlign=middle;horizontal=1;fontSize=12;swimlaneLine=1;fillColor=#ffff88;strokeColor=#36393d;" parent="1" vertex="1">
-          <mxGeometry x="780" width="180" height="120" as="geometry" />
+          <mxGeometry x="827" y="230" width="180" height="120" as="geometry" />
         </mxCell>
         <mxCell id="mH68Cc9VVm9xcUMLe111-15" value="" style="shape=tableRow;horizontal=1;startSize=0;swimlaneHead=0;swimlaneBody=0;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;rounded=0;labelBackgroundColor=none;strokeWidth=2;shadow=0;fontFamily=Helvetica;verticalAlign=middle;fontSize=12;swimlaneLine=1;fillColor=none;" parent="mH68Cc9VVm9xcUMLe111-14" vertex="1">
           <mxGeometry y="30" width="180" height="30" as="geometry" />
@@ -3027,12 +3027,10 @@
             <mxPoint x="820" y="450" as="sourcePoint" />
             <mxPoint x="850" y="310" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="750" y="450" />
-              <mxPoint x="750" y="370" />
-              <mxPoint x="750" y="250" />
-              <mxPoint x="750" y="160" />
-              <mxPoint x="750" y="75" />
-              <mxPoint x="770" y="75" />
+              <mxPoint x="800" y="450" />
+              <mxPoint x="800" y="380" />
+              <mxPoint x="800" y="320" />
+              <mxPoint x="800" y="305" />
             </Array>
           </mxGeometry>
         </mxCell>
